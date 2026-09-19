@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -6,6 +7,13 @@ typedef struct Node {
   struct Node *next;
   struct Node *prev;
 } Node;
+
+// not using it for now
+typedef struct {
+  Node *head;
+  Node *tail;
+  size_t *size;
+} linked_list;
 
 Node *create_node(int data) {
   Node *node = malloc(sizeof(Node));
@@ -20,7 +28,7 @@ Node *create_node(int data) {
   return node;
 }
 
-void append(Node **head, int data) {
+void append(linked_list *list, Node **head, int data) {
   // crete new node
   Node *new_node = create_node(data);
 
